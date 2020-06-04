@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes" />
 <meta property="og:title" content="JaeJae를 초대합니다!" />
 <meta property="og:description" content="샘다미네로 와주세요!" />
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css"/>
+<link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css"/>
 <style>
 * {
 	margin: 0;
@@ -180,16 +180,34 @@ body {
 </head>
 <body>
 	<div id="wrap">
-		<div class="slide_wrap">
-			<div id="autoplay" style="display:none;">
-				<!-- //이미지 추가 -->
-				<img src="https://user-images.githubusercontent.com/66404627/83719242-9df7cf00-a671-11ea-91a4-624dcca66da7.JPG" class="img100" />
-				<img src="https://user-images.githubusercontent.com/66404627/83719233-9c2e0b80-a671-11ea-904b-7011508e101c.JPG" class="img100" />
-				<img src="https://user-images.githubusercontent.com/66404627/83719245-9e906580-a671-11ea-88ca-295a951b8d3b.JPG" class="img100" />
+		<div class="slideshow-container">
+
+			<div class="mySlides fade">
+				<img src="https://user-images.githubusercontent.com/66404627/83719242-9df7cf00-a671-11ea-91a4-624dcca66da7.JPG" style="width:100%">
 			</div>
+
+			<div class="mySlides fade">
+				<img src="https://user-images.githubusercontent.com/66404627/83722244-9d623700-a677-11ea-8161-94c0e6d8138d.JPG" style="width:100%">
+			</div>
+
+			<div class="mySlides fade">
+				<img src="https://user-images.githubusercontent.com/66404627/83722248-9f2bfa80-a677-11ea-863c-89f541d8c075.jpg" style="width:100%">
+			</div>
+
+			<div class="mySlides fade">
+				<img src="https://user-images.githubusercontent.com/66404627/83719245-9e906580-a671-11ea-88ca-295a951b8d3b.JPG" style="width:100%">
+			</div>
+
+		</div>
+		<br>
+		<div style="text-align:center">
+			<span class="dot"></span>
+			<span class="dot"></span>
+			<span class="dot"></span>
+			<span class="dot"></span>
 		</div>
 		<div class="content_wrap">
-			<h1><img src="https://user-images.githubusercontent.com/66404627/83719248-9f28fc00-a671-11ea-87cb-661235bf89be.png" />샘다미네에 초대합니다<img src="https://user-images.githubusercontent.com/66404627/83719248-9f28fc00-a671-11ea-87cb-661235bf89be.png" /></h1>
+			<h1><img src="images/h.png" />샘다미네에 초대합니다<img src="images/h.png" /></h1>
 			상민이가 제일 좋아하는 재은이를 모십니다!!!
 		</div>
 		<div class="contact_wrap">
@@ -271,7 +289,26 @@ body {
 			$(".slide_wrap").height(tmpHeight);
 		});
 	});
+	var slideIndex = 0;
+	showSlides();
 
+	function showSlides() {
+		var i;
+		var slides = document.getElementsByClassName("mySlides");
+		var dots = document.getElementsByClassName("dot");
+		for (i = 0; i < slides.length; i++) {
+			slides[i].style.display = "none";
+		}
+		slideIndex++;
+		if (slideIndex > slides.length) {slideIndex = 1}
+		for (i = 0; i < dots.length; i++) {
+			dots[i].className = dots[i].className.replace(" active", "");
+		}
+		slides[slideIndex-1].style.display = "block";
+		dots[slideIndex-1].className += " active";
+		setTimeout(showSlides, 2000); // Change image every 2 seconds
+	}
 	</script>
+
 </body>
 </html>
